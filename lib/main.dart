@@ -42,17 +42,17 @@ Future start1() async {
   print('st1');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: FirebaseOptions(
-      apiKey: "AIzaSyAL6iSmFDmDDD78wiWg3VFFp4JXsyib7AM",
+      apiKey: "AIzaSyBry78E3QOCEa2ZFlKPYrnOjLVA4cqGJFk",
 
-      authDomain: "truexchange24cr.firebaseapp.com",
+      authDomain: "truexchange24.firebaseapp.com",
 
-      projectId: "truexchange24cr",
+      projectId: "truexchange24",
 
-      storageBucket: "truexchange24cr.appspot.com",
+      storageBucket: "truexchange24.appspot.com",
 
-      messagingSenderId: "1048220915011",
+      messagingSenderId: "714060747230",
 
-      appId: "1:1048220915011:web:9342916f9c0cedc8e38bf6"
+      appId: "1:714060747230:web:7724dbc825da3c0cedcd4f"
 
   ),);
 }

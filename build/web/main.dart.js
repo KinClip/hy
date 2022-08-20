@@ -8273,7 +8273,7 @@ while(true)switch(s){case 0:A.hz("st1")
 if($.I==null)A.alr()
 $.I.toString
 s=2
-return A.a3(A.Fz(A.aoR("AIzaSyAL6iSmFDmDDD78wiWg3VFFp4JXsyib7AM","1:1048220915011:web:9342916f9c0cedc8e38bf6","truexchange24cr.firebaseapp.com",null,null,"1048220915011","truexchange24cr","truexchange24cr.appspot.com")),$async$ajn)
+return A.a3(A.Fz(A.aoR("AIzaSyBry78E3QOCEa2ZFlKPYrnOjLVA4cqGJFk","1:714060747230:web:7724dbc825da3c0cedcd4f","truexchange24.firebaseapp.com",null,null,"714060747230","truexchange24","truexchange24.appspot.com")),$async$ajn)
 case 2:return A.W(null,r)}})
 return A.X($async$ajn,r)},
 aH8(){var s,r
