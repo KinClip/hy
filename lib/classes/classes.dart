@@ -1,13 +1,79 @@
 
 import 'package:flutter/material.dart';
 
+class Courses {
+  String kurs;
 
+  Courses({required  this.kurs});
+}
+final allcrs = <Courses>[
+Courses(
+kurs: '114.00112'
+),
+  Courses(
+      kurs: '3 978 924'
+  ),
+  Courses(
+      kurs: '3 978 924'
+  ),
+  Courses(
+      kurs: '3 978 924'
+  ),
+  Courses(
+      kurs: '558 214'
+  ),
+  Courses(
+      kurs: '1 113 232'
+  ),
+  Courses(
+      kurs: '1 209 424'
+  ),
+  Courses(
+      kurs: '910 212'
+  ),
+  Courses(
+      kurs: '111 307'
+  ),
+  Courses(
+      kurs: '203 001'
+  ),
+  Courses(
+      kurs: '155 098'
+  ),
+  Courses(
+      kurs: '28 902'
+  ),
+  Courses(
+      kurs: '721 056'
+  ),
+  Courses(
+      kurs: '504 930'
+  ),
+  Courses(
+      kurs: '205 077'
+  ),
+
+  Courses(
+      kurs: '1 215 210'
+  ),
+  Courses(
+      kurs: '14 001'
+  ),
+  Courses(
+      kurs: '2 489 028'
+  ),
+  Courses(
+      kurs: '5 782 920'
+  ),
+
+];
 class Coin {
   String name;
   String icon;
 
   Coin({required  this.name, required this.icon});
 }
+
 final allcoins = <Coin>[
   Coin(
     name: 'Bitcoin',

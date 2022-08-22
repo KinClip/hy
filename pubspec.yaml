@@ -41,6 +41,7 @@ dependencies:
   fluttertoast:
   firebase:
   firebase_core:
+  mailer: ^5.2.0
 
 dev_dependencies:
   flutter_test:
