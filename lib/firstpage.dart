@@ -2365,10 +2365,8 @@ class _UserPanel0State extends State<UserPanel0> {
                                   child: TextButton(onPressed: (){
                                     if(check1==false&&email.contains('@')&&_controller2.text!='')
                                     {
-                                      print(email);
                                       dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
                                       Navigator.pushNamed(context, '/9');
-
                                     }
                                   }, child:
                                   Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
