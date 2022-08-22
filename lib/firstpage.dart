@@ -2270,7 +2270,7 @@ class _UserPanel0State extends State<UserPanel0> {
                                       Container(
                                         width:  MediaQuery.of(context).size.width*0.38,
                                         child: TextField(
-
+                                          controller: _controller1,
                                           style: TextStyle(
                                               color: Colors.white
                                           ),
@@ -2307,6 +2307,7 @@ class _UserPanel0State extends State<UserPanel0> {
                                       Container(
                                         width:  MediaQuery.of(context).size.width*0.38,
                                         child: TextField(
+                                          controller: _controller2,
                                           style: TextStyle(
                                               color: Colors.white
                                           ),
@@ -2363,7 +2364,7 @@ class _UserPanel0State extends State<UserPanel0> {
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                   ),
                                   child: TextButton(onPressed: (){
-                                    if(check1==false&&email.contains('@')&&_controller2.text!='')
+                                    if(check1==false&&_controller1.text.contains('@')&&_controller2.text!='')
                                     {
                                       dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
                                       Navigator.pushNamed(context, '/9');
