@@ -1240,11 +1240,61 @@ class _UserPanel0State extends State<UserPanel0> {
             child: TextButton(onPressed: () async{
               if(check1==false&&email.contains('@')&&_controller2.text!='')
                 {
-
-                dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
-                Navigator.pushNamed(context, '/9');
-
+                  showDialog(context: context, builder: (BuildContext context){
+                    return AlertDialog(
+                      actionsPadding: EdgeInsets.all(0),
+                      // title: Text('Add name/important/deadline'),
+                      content:
+                      Container(
+                          height: 200,
+                          width: 200,
+                          color: Colors.white70,
+                          child:
+                          Column(
+                            children: [
+                              Text('Создать заявку?')
+                            ],
+                          )),
+                      actions: [
+                        TextButton(onPressed: (){
+                          dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                          Navigator.pushNamed(context, '/9');
+                        }, child: Text('Да', style: TextStyle(
+                            color: Colors.black
+                        ),))
+                      ],
+                    );
+                  });
                 }
+              else
+                {
+                  showDialog(context: context, builder: (BuildContext context){
+                    return AlertDialog(
+                      actionsPadding: EdgeInsets.all(0),
+                      // title: Text('Add name/important/deadline'),
+                      content:
+                      Container(
+                          height: 200,
+                          width: 200,
+                          color: Colors.white70,
+                          child:
+                          Column(
+                            children: [
+                              Text('Заполните данные корректно!')
+                            ],
+                          )),
+                      actions: [
+                        TextButton(onPressed: (){
+                       //   dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                          Navigator.pushNamed(context, '/');
+                        }, child: Text('Ок', style: TextStyle(
+                            color: Colors.black
+                        ),))
+                      ],
+                    );
+                  });
+                }
+
             }, child:
             Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
                 fontSize: 14,
@@ -1389,12 +1439,11 @@ class _UserPanel0State extends State<UserPanel0> {
 
                                           ),)
                                       ))),
-                                  Container(
+                                  route=='/'?Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 70,
                                       child: TextButton(onPressed: (){
                                         Navigator.pushNamed(context, '/4');
-
                                       }, child:
                                       (
                                           Text('Вход',style: TextStyle(
@@ -1402,8 +1451,43 @@ class _UserPanel0State extends State<UserPanel0> {
                                             fontSize: 14,
 
                                           ),)
+                                      ))): Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 70,
+                                      child: TextButton(onPressed: (){
+                                        showDialog(context: context, builder: (BuildContext context){
+                                          return AlertDialog(
+                                            actionsPadding: EdgeInsets.all(0),
+                                            // title: Text('Add name/important/deadline'),
+                                            content:
+                                            Container(
+                                                height: 200,
+                                                width: 200,
+                                                color: Colors.white70,
+                                                child:
+                                                Column(
+                                                  children: [
+                                                    Text('Хотите выйти?')
+                                                  ],
+                                                )),
+                                            actions: [
+                                              TextButton(onPressed: (){
+                                                route='/';
+                                                Navigator.pushNamed(context, '/');
+                                              }, child: Text('Да', style: TextStyle(
+                                                  color: Colors.black
+                                              ),))
+                                            ],
+                                          );
+                                        }); }, child:
+                                      (
+                                          Text('Выход',style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+
+                                          ),)
                                       ))),
-                                  Container(
+                                  route=='/'?Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 70,
                                       child: TextButton(onPressed: (){
@@ -1415,7 +1499,7 @@ class _UserPanel0State extends State<UserPanel0> {
                                             fontSize: 14,
 
                                           ),)
-                                      ))),
+                                      ))):Container(),
 
                                 ],
                               ),
@@ -2271,6 +2355,11 @@ class _UserPanel0State extends State<UserPanel0> {
                                         width:  MediaQuery.of(context).size.width*0.38,
                                         child: TextField(
                                           controller: _controller1,
+                                          onChanged: (String value) {
+                                            setState(() {
+                                              email = value;
+                                            });
+                                          },
                                           style: TextStyle(
                                               color: Colors.white
                                           ),
@@ -2364,12 +2453,67 @@ class _UserPanel0State extends State<UserPanel0> {
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                   ),
                                   child: TextButton(onPressed: (){
-                                    if(check1==false&&_controller1.text.contains('@')&&_controller2.text!='')
+
+
+
+                                    if(check1==false&&email.contains('@')&&_controller2.text!='')
                                     {
-                                      dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
-                                      Navigator.pushNamed(context, '/9');
+                                      showDialog(context: context, builder: (BuildContext context){
+                                        return AlertDialog(
+                                          actionsPadding: EdgeInsets.all(0),
+                                          // title: Text('Add name/important/deadline'),
+                                          content:
+                                          Container(
+                                              height: 200,
+                                              width: 200,
+                                              color: Colors.white70,
+                                              child:
+                                              Column(
+                                                children: [
+                                                  Text('Создать заявку?')
+                                                ],
+                                              )),
+                                          actions: [
+                                            TextButton(onPressed: (){
+                                              dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                              Navigator.pushNamed(context, '/9');
+                                            }, child: Text('Да', style: TextStyle(
+                                                color: Colors.black
+                                            ),))
+                                          ],
+                                        );
+                                      });
                                     }
-                                  }, child:
+                                    else
+                                    {
+                                      showDialog(context: context, builder: (BuildContext context){
+                                        return AlertDialog(
+                                          actionsPadding: EdgeInsets.all(0),
+                                          // title: Text('Add name/important/deadline'),
+                                          content:
+                                          Container(
+                                              height: 200,
+                                              width: 200,
+                                              color: Colors.white70,
+                                              child:
+                                              Column(
+                                                children: [
+                                                  Text('Заполните данные корректно!')
+                                                ],
+                                              )),
+                                          actions: [
+                                            TextButton(onPressed: (){
+                                              //   dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                              Navigator.pushNamed(context, '/');
+                                            }, child: Text('Ок', style: TextStyle(
+                                                color: Colors.black
+                                            ),))
+                                          ],
+                                        );
+                                      });
+                                    }
+                                  },
+                                      child:
                                   Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.white

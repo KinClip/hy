@@ -1,19 +1,35 @@
 import 'dart:ui';
 
 import 'package:cryptochange/classes/classes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 import 'курсы.dart';
 import 'dart:math';
 
 import 'main.dart';
 
+String username = 'kinclip14@gmail.com';
+String password = '12e712GSD912821412efasdaWDEWREdsi';
+
+final smtpServer = gmail(username, password);
+
+
+
 String svalue = '1';
 double dvalue = 1.0;
+double dvalue1 = 1.0;
+
+String email = '';
+
+String c1 ='',c2='';
+
 List<int> color = [
-  0,
+  3,
   255,
   255,
-  0,
+  3,
   255,
   255,
 ];
@@ -45,6 +61,8 @@ class UserPanel1 extends StatefulWidget {
 
 class _UserPanel1State extends State<UserPanel1> {
   late TextEditingController _controller;
+  late TextEditingController _controller1;
+  late TextEditingController _controller2;
 
   bool check1 = true;
 
@@ -52,12 +70,19 @@ class _UserPanel1State extends State<UserPanel1> {
   void initState() {
     super.initState();
     _controller = TextEditingController();
+    _controller1 = TextEditingController();
+    _controller2 = TextEditingController();
+
   }
 
   @override
-  void dispose() {
+  void dispose(){
+    _controller1.dispose();
+    _controller2.dispose();
+
     _controller.dispose();
     super.dispose();
+
   }
 
   @override
@@ -78,6 +103,7 @@ class _UserPanel1State extends State<UserPanel1> {
                     Color.fromRGBO(21, 1, 38, 1.0),
                   ],
                 )),
+
             child: Container(
                 color: Colors.black45,
                 child:
@@ -280,7 +306,7 @@ class _UserPanel1State extends State<UserPanel1> {
                           Container(
                             margin: EdgeInsets.only(top: 40),
                             decoration: BoxDecoration(
-                              color: Colors.black12,
+                              color: Colors.white12,
                               borderRadius: BorderRadius.all(Radius.circular(6)),
                             ),
                             width: MediaQuery.of(context).size.width*0.25,
@@ -311,17 +337,16 @@ class _UserPanel1State extends State<UserPanel1> {
                                               type1 = 0;
                                               v1 = 0;
                                               i1=17;
-                                              color[0]=0;
-                                              color[1]=255;
-                                              color[2]=255;
+                                              color[0]=3;
+                                              color[1]=0;
+                                              color[2]=0;
                                             });
                                           }, child:
                                           (
                                               Text('Coin',style: TextStyle(
-                                                color: Color.fromRGBO(color[0], color[0], color[0], 1.0),
+                                                color: color[0]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-
                                               ),)
                                           ))),
                                       Container(
@@ -333,17 +358,16 @@ class _UserPanel1State extends State<UserPanel1> {
                                               type1 = 0;
                                               v1 = 1;
                                               i1=17;
-                                              color[0]=255;
-                                              color[1]=0;
-                                              color[2]=255;
+                                              color[0]=0;
+                                              color[1]=3;
+                                              color[2]=0;
                                             });
                                           }, child:
                                           (
                                               Text('Банк',style: TextStyle(
-                                                color: Color.fromRGBO(color[1], color[1], color[1], 1),
+                                                color: color[1]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-
                                               ),)
                                           ))),
                                       Container(
@@ -355,18 +379,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                               type1 = 0;
                                               v1 = 2;
                                               i1 = 11;
-                                              color[0]=255;
-                                              color[1]=255;
-                                              color[2]=0;
+                                              color[0]=0;
+                                              color[1]=0;
+                                              color[2]=3;
                                             });
 
                                           }, child:
                                           (
                                               Text('ПС',style: TextStyle(
-                                                color: Color.fromRGBO(color[2], color[2], color[2], 1),
+                                                color: color[2]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-
                                               ),)
                                           ))),
                                     ],
@@ -559,7 +582,7 @@ class _UserPanel1State extends State<UserPanel1> {
                           Container(
                             margin: EdgeInsets.only(top: 40),
                             decoration: BoxDecoration(
-                              color: Colors.black12,
+                              color: Colors.white12,
                               borderRadius: BorderRadius.all(Radius.circular(6)),
                             ),
                             width: MediaQuery.of(context).size.width*0.25,
@@ -592,16 +615,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                               mystr = "Введите номер вашего кошелька";
                                               v2 = 0;
                                               i2=17;
-                                              color[5]=255;
-                                              color[4]=255;
-                                              color[3]=0;
+                                              color[5]=0;
+                                              color[4]=0;
+                                              color[3]=3;
                                             });
                                           }, child:
                                           (
                                               Text('Coin',style: TextStyle(
-                                                color: Color.fromRGBO(color[3], color[3], color[3], 1),
+                                                color: color[3]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
+
 
                                               ),)
                                           ))),
@@ -615,16 +639,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                               mystr = "Введите номер вашей карты         ";
                                               v2 = 1;
                                               i2=17;
-                                              color[5]=255;
-                                              color[4]=0;
-                                              color[3]=255;
+                                              color[5]=0;
+                                              color[4]=3;
+                                              color[3]=0;
                                             });
                                           }, child:
                                           (
                                               Text('Банк',style: TextStyle(
-                                                color: Color.fromRGBO(color[4], color[4], color[4], 1),
+                                                color: color[4]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
+
 
                                               ),)
                                           ))),
@@ -638,17 +663,18 @@ class _UserPanel1State extends State<UserPanel1> {
                                               mystr = "Введите номер вашего кошелька";
                                               v2 = 2;
                                               i2 = 11;
-                                              color[5]=0;
-                                              color[4]=255;
-                                              color[3]=255;
+                                              color[5]=3;
+                                              color[4]=0;
+                                              color[3]=0;
                                             });
 
                                           }, child:
                                           (
                                               Text('ПС',style: TextStyle(
-                                                color: Color.fromRGBO(color[5], color[5], color[5], 1),
+                                                color: color[5]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                    :Color.fromRGBO(255, 255, 255, 1.0),
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.bold,
+
 
                                               ),)
                                           ))),
@@ -839,7 +865,7 @@ class _UserPanel1State extends State<UserPanel1> {
                           Container(
                             margin: EdgeInsets.only(top: 40),
                             decoration: BoxDecoration(
-                              color: Colors.black12,
+                              color: Colors.white12,
                               borderRadius: BorderRadius.all(Radius.circular(6)),
                             ),
                             width: MediaQuery.of(context).size.width*0.45,
@@ -870,6 +896,8 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     itemCount: 1,
                                                     itemBuilder: (_, index) {
                                                       if (v1 == 0)
+                                                      {
+                                                        c1=allcoins[type1].name;
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -889,8 +917,10 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       if (v1 == 1)
+                                                      {
+                                                        c1=allbanks[type1].name;
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -910,8 +940,10 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       if (v1 == 2)
+                                                      {
+                                                        c1=allps[type1].name;
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -931,7 +963,7 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       return Container();
                                                     }
                                                 )),
@@ -961,7 +993,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                                   border: UnderlineInputBorder(),
                                                   enabledBorder: UnderlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Colors.transparent,
+                                                      color: Colors.white12,
                                                       width: 0,
                                                       style: BorderStyle.solid,
                                                     ),
@@ -992,6 +1024,8 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     itemCount: 1,
                                                     itemBuilder: (_, index) {
                                                       if (v2 == 0)
+                                                      {
+                                                        c2=allcoins[type2].name;
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -1011,8 +1045,11 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       if (v2 == 1)
+                                                      {
+                                                        c2=allbanks[type2].name;
+
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -1031,8 +1068,10 @@ class _UserPanel1State extends State<UserPanel1> {
                                                               ),
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       if (v2 == 2)
+                                                      {
+                                                        c2=allps[type2].name;
                                                         return Container(
                                                           width: 40,
                                                           height: 30,
@@ -1051,7 +1090,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                                               ),
                                                             ],
                                                           ),
-                                                        );
+                                                        );}
                                                       return Container();
                                                     }
                                                 )),
@@ -1072,7 +1111,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                                   border: UnderlineInputBorder(),
                                                   disabledBorder: UnderlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Colors.transparent,
+                                                      color: Colors.white12,
                                                       width: 0,
                                                       style: BorderStyle.solid,
                                                     ),
@@ -1102,6 +1141,12 @@ class _UserPanel1State extends State<UserPanel1> {
                                       Container(
                                         width:  MediaQuery.of(context).size.width*0.2-60,
                                         child: TextField(
+                                          controller: _controller1,
+                                          onSubmitted: (String value) {
+                                            setState(() {
+                                              email = value;
+                                            });
+                                          },
                                           style: TextStyle(
                                               color: Colors.white
                                           ),
@@ -1136,6 +1181,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                       Container(
                                         width:  MediaQuery.of(context).size.width*0.2-60,
                                         child: TextField(
+                                          controller: _controller2,
                                           style: TextStyle(
                                               color: Colors.white
                                           ),
@@ -1171,7 +1217,9 @@ class _UserPanel1State extends State<UserPanel1> {
                                               check1=true;
                                             });
                                         }, icon: check1?Icon(Icons.check_box_outline_blank_sharp):Icon(Icons.check_box_outlined), color: Colors.white,),
-                                        TextButton(onPressed: (){}, child:
+                                        TextButton(onPressed: (){
+                                          Navigator.pushNamed(context, '/8');
+                                        }, child:
                                         Text('Я согласен с правилами обмена',
                                           style:
                                           TextStyle(
@@ -1186,10 +1234,68 @@ class _UserPanel1State extends State<UserPanel1> {
                                   height: 60,
                                   margin: EdgeInsets.only(top: 3),
                                   decoration: BoxDecoration(
-                                    color: Colors.black,
+                                    color: Color.fromRGBO(252, 156, 45, 1),
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                   ),
-                                  child: TextButton(onPressed: (){}, child:
+                                  child: TextButton(onPressed: () async{
+                                    if(check1==false&&email.contains('@')&&_controller2.text!='')
+                                    {
+                                      showDialog(context: context, builder: (BuildContext context){
+                                        return AlertDialog(
+                                          actionsPadding: EdgeInsets.all(0),
+                                          // title: Text('Add name/important/deadline'),
+                                          content:
+                                          Container(
+                                              height: 200,
+                                              width: 200,
+                                              color: Colors.white70,
+                                              child:
+                                              Column(
+                                                children: [
+                                                  Text('Создать заявку?')
+                                                ],
+                                              )),
+                                          actions: [
+                                            TextButton(onPressed: (){
+                                              dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                              Navigator.pushNamed(context, '/9');
+                                            }, child: Text('Да', style: TextStyle(
+                                                color: Colors.black
+                                            ),))
+                                          ],
+                                        );
+                                      });
+                                    }
+                                    else
+                                    {
+                                      showDialog(context: context, builder: (BuildContext context){
+                                        return AlertDialog(
+                                          actionsPadding: EdgeInsets.all(0),
+                                          // title: Text('Add name/important/deadline'),
+                                          content:
+                                          Container(
+                                              height: 200,
+                                              width: 200,
+                                              color: Colors.white70,
+                                              child:
+                                              Column(
+                                                children: [
+                                                  Text('Заполните данные корректно!')
+                                                ],
+                                              )),
+                                          actions: [
+                                            TextButton(onPressed: (){
+                                              //   dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                              Navigator.pushNamed(context, '/');
+                                            }, child: Text('Ок', style: TextStyle(
+                                                color: Colors.black
+                                            ),))
+                                          ],
+                                        );
+                                      });
+                                    }
+
+                                  }, child:
                                   Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.white
@@ -1214,16 +1320,14 @@ class _UserPanel1State extends State<UserPanel1> {
         body:
         Container(
             decoration: BoxDecoration(
-
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
                     Color.fromRGBO(61, 90, 128, 1),
-                    Color.fromRGBO(152, 193, 217, 1),
-                    Color.fromRGBO(224, 251, 252, 1),
-                    Color.fromRGBO(238, 108, 77, 1),
+                    Color.fromRGBO(21, 1, 38, 1.0),
                     Color.fromRGBO(41, 50, 65, 1),
+                    Color.fromRGBO(21, 1, 38, 1.0),
                   ],
                 )),
             child: Container(
@@ -1261,20 +1365,21 @@ class _UserPanel1State extends State<UserPanel1> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                   image: AssetImage("assets/logo.png"),
-                                                  fit: BoxFit.cover),
+                                                  fit: BoxFit.cover
+                                              ),
                                             ),),
                                           Container(
                                               width: MediaQuery.of(context).size.width,
                                               height: 70,
                                               color: Colors.transparent,
                                               child: TextButton(onPressed: (){
-                                                Navigator.pushNamed(context, '/7');
+                                                Navigator.pushNamed(context, '/');
                                               }, child:
                                               (
                                                   Text('Главная',style: TextStyle(
                                                     color: Colors.black87,
                                                     fontSize: 14,
-                                                    fontWeight: FontWeight.bold,
+
                                                   ),)
                                               ))),
                                           Container(
@@ -1334,7 +1439,19 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                   ),)
                                               ))),
-                                          Container(
+                                          route=='/'?Container(
+                                              width: MediaQuery.of(context).size.width,
+                                              height: 70,
+                                              child: TextButton(onPressed: (){
+                                                Navigator.pushNamed(context, '/4');
+                                              }, child:
+                                              (
+                                                  Text('Вход',style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14,
+
+                                                  ),)
+                                              ))): Container(
                                               width: MediaQuery.of(context).size.width,
                                               height: 70,
                                               child: TextButton(onPressed: (){
@@ -1355,10 +1472,10 @@ class _UserPanel1State extends State<UserPanel1> {
                                                         )),
                                                     actions: [
                                                       TextButton(onPressed: (){
-                                                        route = '/';
+                                                        route='/';
                                                         Navigator.pushNamed(context, '/');
                                                       }, child: Text('Да', style: TextStyle(
-                                                        color: Colors.black
+                                                          color: Colors.black
                                                       ),))
                                                     ],
                                                   );
@@ -1370,7 +1487,19 @@ class _UserPanel1State extends State<UserPanel1> {
 
                                                   ),)
                                               ))),
+                                          route=='/'?Container(
+                                              width: MediaQuery.of(context).size.width,
+                                              height: 70,
+                                              child: TextButton(onPressed: (){
+                                                Navigator.pushNamed(context, '/5');
+                                              }, child:
+                                              (
+                                                  Text('Регистрация',style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14,
 
+                                                  ),)
+                                              ))):Container(),
 
                                         ],
                                       ),
@@ -1381,7 +1510,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                   child: Icon(Icons.menu_outlined, color: Colors.white,))
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(20,10,0,0),
+                            margin: EdgeInsets.fromLTRB(20,10,0,20),
 
                             width: MediaQuery.of(context).size.width,
                             child: Text('МУЛЬТИВАЛЮТНЫЙ ОБМЕННЫЙ СЕРВИС',
@@ -1400,7 +1529,7 @@ class _UserPanel1State extends State<UserPanel1> {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.black12,
+                                    color: Colors.white12,
                                     borderRadius: BorderRadius.all(Radius.circular(6)),
                                   ),
                                   width: MediaQuery.of(context).size.width*0.8,
@@ -1430,16 +1559,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     type1 = 0;
                                                     v1 = 0;
                                                     i1=17;
-                                                    color[0]=0;
-                                                    color[1]=255;
-                                                    color[2]=255;
+                                                    color[0]=3;
+                                                    color[1]=0;
+                                                    color[2]=0;
                                                   });
                                                 }, child:
                                                 (
                                                     Text('Coin',style: TextStyle(
-                                                      color: Color.fromRGBO(color[0], color[0], color[0], 1.0),
+                                                      color: color[0]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1452,16 +1582,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     type1 = 0;
                                                     v1 = 1;
                                                     i1=17;
-                                                    color[0]=255;
-                                                    color[1]=0;
-                                                    color[2]=255;
+                                                    color[0]=0;
+                                                    color[1]=3;
+                                                    color[2]=0;
                                                   });
                                                 }, child:
                                                 (
                                                     Text('Банк',style: TextStyle(
-                                                      color: Color.fromRGBO(color[1], color[1], color[1], 1),
+                                                      color: color[1]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1474,17 +1605,18 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     type1 = 0;
                                                     v1 = 2;
                                                     i1 = 11;
-                                                    color[0]=255;
-                                                    color[1]=255;
-                                                    color[2]=0;
+                                                    color[0]=0;
+                                                    color[1]=0;
+                                                    color[2]=3;
                                                   });
 
                                                 }, child:
                                                 (
                                                     Text('ПС',style: TextStyle(
-                                                      color: Color.fromRGBO(color[2], color[2], color[2], 1),
+                                                      color: color[2]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1677,7 +1809,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                 Container(
                                   margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
                                   decoration: BoxDecoration(
-                                    color: Colors.black12,
+                                    color: Colors.white12,
                                     borderRadius: BorderRadius.all(Radius.circular(6)),
                                   ),
                                   width: MediaQuery.of(context).size.width*0.8,
@@ -1685,7 +1817,6 @@ class _UserPanel1State extends State<UserPanel1> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                                         width: MediaQuery.of(context).size.width*0.8,
                                         child: Row(
                                           children: [
@@ -1710,16 +1841,18 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     mystr = "Введите номер вашего кошелька";
                                                     v2 = 0;
                                                     i2=17;
-                                                    color[5]=255;
-                                                    color[4]=255;
-                                                    color[3]=0;
+                                                    color[5]=0;
+                                                    color[4]=0;
+                                                    color[3]=3;
                                                   });
                                                 }, child:
                                                 (
                                                     Text('Coin',style: TextStyle(
-                                                      color: Color.fromRGBO(color[3], color[3], color[3], 1),
+                                                      color: color[3]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
+
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1733,16 +1866,17 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     mystr = "Введите номер вашей карты         ";
                                                     v2 = 1;
                                                     i2=17;
-                                                    color[5]=255;
-                                                    color[4]=0;
-                                                    color[3]=255;
+                                                    color[5]=0;
+                                                    color[4]=3;
+                                                    color[3]=0;
                                                   });
                                                 }, child:
                                                 (
                                                     Text('Банк',style: TextStyle(
-                                                      color: Color.fromRGBO(color[4], color[4], color[4], 1),
+                                                      color: color[4]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1756,17 +1890,18 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     mystr = "Введите номер вашего кошелька";
                                                     v2 = 2;
                                                     i2 = 11;
-                                                    color[5]=0;
-                                                    color[4]=255;
-                                                    color[3]=255;
+                                                    color[5]=3;
+                                                    color[4]=0;
+                                                    color[3]=0;
                                                   });
 
                                                 }, child:
                                                 (
                                                     Text('ПС',style: TextStyle(
-                                                      color: Color.fromRGBO(color[5], color[5], color[5], 1),
+                                                      color: color[5]==3?Color.fromRGBO(246, 201, 67, 1.0)
+                                                          :Color.fromRGBO(255, 255, 255, 1.0),
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+
 
                                                     ),)
                                                 ))),
@@ -1775,6 +1910,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                       ),
 
                                       Container(
+
                                         width: MediaQuery.of(context).size.width*0.8,
                                         height: 190,
                                         child: ListView.builder(
@@ -1954,7 +2090,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.black12,
+                                    color: Colors.white12,
                                     borderRadius: BorderRadius.all(Radius.circular(6)),
                                   ),
                                   width: MediaQuery.of(context).size.width*0.8,
@@ -2051,7 +2187,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                                           }
                                                       )),
                                                   Container(
-                                                    padding: EdgeInsets.only(bottom: 0),
+                                                    padding: EdgeInsets.only(bottom: 4),
                                                     width: MediaQuery.of(context).size.width*0.78-60,
                                                     height: 40,
                                                     child: TextField(
@@ -2092,7 +2228,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                             Container(
                                               width: MediaQuery.of(context).size.width*0.78,
                                               height: 30,
-                                              margin: EdgeInsets.only(top: 3),
+                                              // padding: EdgeInsets.only(bottom: 4),
                                               decoration: BoxDecoration(
                                                 color: Colors.black45,
                                               ),
@@ -2171,7 +2307,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                                           }
                                                       )),
                                                   Container(
-                                                    padding: EdgeInsets.only(bottom: 0),
+                                                    padding: EdgeInsets.only(bottom: 4),
                                                     width:  MediaQuery.of(context).size.width*0.78-60,
                                                     height: 150,
                                                     child: TextField(
@@ -2218,6 +2354,12 @@ class _UserPanel1State extends State<UserPanel1> {
                                             Container(
                                               width:  MediaQuery.of(context).size.width*0.38,
                                               child: TextField(
+                                                controller: _controller1,
+                                                onSubmitted: (String value) {
+                                                  setState(() {
+                                                    email = value;
+                                                  });
+                                                },
                                                 style: TextStyle(
                                                     color: Colors.white
                                                 ),
@@ -2254,6 +2396,7 @@ class _UserPanel1State extends State<UserPanel1> {
                                             Container(
                                               width:  MediaQuery.of(context).size.width*0.38,
                                               child: TextField(
+                                                controller: _controller2,
                                                 style: TextStyle(
                                                     color: Colors.white
                                                 ),
@@ -2289,7 +2432,9 @@ class _UserPanel1State extends State<UserPanel1> {
                                                     check1=true;
                                                   });
                                               }, icon: check1?Icon(Icons.check_box_outline_blank_sharp):Icon(Icons.check_box_outlined), color: Colors.white,),
-                                              TextButton(onPressed: (){}, child:
+                                              TextButton(onPressed: (){
+                                                Navigator.pushNamed(context, '/8');
+                                              }, child:
                                               Text('Я согласен с правилами обмена',
                                                 style:
                                                 TextStyle(
@@ -2307,11 +2452,69 @@ class _UserPanel1State extends State<UserPanel1> {
                                           color: Colors.black,
                                           borderRadius: BorderRadius.all(Radius.circular(10)),
                                         ),
-                                        child: TextButton(onPressed: (){}, child:
-                                        Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.white
-                                        ),),)),
+                                        child: TextButton(onPressed: (){
+                                          if(check1==false&&email.contains('@')&&_controller2.text!='')
+                                          {
+                                            showDialog(context: context, builder: (BuildContext context){
+                                              return AlertDialog(
+                                                actionsPadding: EdgeInsets.all(0),
+                                                // title: Text('Add name/important/deadline'),
+                                                content:
+                                                Container(
+                                                    height: 200,
+                                                    width: 200,
+                                                    color: Colors.white70,
+                                                    child:
+                                                    Column(
+                                                      children: [
+                                                        Text('Создать заявку?')
+                                                      ],
+                                                    )),
+                                                actions: [
+                                                  TextButton(onPressed: (){
+                                                    dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                                    Navigator.pushNamed(context, '/9');
+                                                  }, child: Text('Да', style: TextStyle(
+                                                      color: Colors.black
+                                                  ),))
+                                                ],
+                                              );
+                                            });
+                                          }
+                                          else
+                                          {
+                                            showDialog(context: context, builder: (BuildContext context){
+                                              return AlertDialog(
+                                                actionsPadding: EdgeInsets.all(0),
+                                                // title: Text('Add name/important/deadline'),
+                                                content:
+                                                Container(
+                                                    height: 200,
+                                                    width: 200,
+                                                    color: Colors.white70,
+                                                    child:
+                                                    Column(
+                                                      children: [
+                                                        Text('Заполните данные корректно!')
+                                                      ],
+                                                    )),
+                                                actions: [
+                                                  TextButton(onPressed: (){
+                                                    //   dvalue1 = (dvalue*(Courses1[typeforcourse2]/Courses1[typeforcourse1]));
+                                                    Navigator.pushNamed(context, '/');
+                                                  }, child: Text('Ок', style: TextStyle(
+                                                      color: Colors.black
+                                                  ),))
+                                                ],
+                                              );
+                                            });
+                                          }
+                                        },
+                                            child:
+                                            Center(child:Text('НАЧАТЬ ОБМЕН',style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.white
+                                            ),),)),
 
                                       )
                                     ],
@@ -2328,5 +2531,10 @@ class _UserPanel1State extends State<UserPanel1> {
                       );})
             )
         ));
+  }
+
+  void into() async{
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
   }
 }
