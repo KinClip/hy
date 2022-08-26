@@ -1,5 +1,6 @@
 import 'package:cryptochange/Otzivi.dart';
 import 'package:cryptochange/contacts.dart';
+import 'package:cryptochange/dartbot.dart';
 import 'package:cryptochange/kursi.dart';
 import 'package:cryptochange/reestration.dart';
 import 'package:cryptochange/reservi.dart';
@@ -83,6 +84,7 @@ Future<Map<String,String>> start() {
       '/8': (context) => uslovia(),
       '/9': (context) => Obmen(),
       '/10': (context) =>MyHomePage(),
+      '/11': (context) =>MyApp(),
     },
   ));
   return Future.delayed(Duration(seconds: 1), () => {'id':'d','sad':'e'});

@@ -70,80 +70,186 @@ kurs: '114.00112'
 class Coin {
   String name;
   String icon;
+  int Num;
 
-  Coin({required  this.name, required this.icon});
+  Coin({required  this.name, required this.icon, required this.Num});
 }
+
+
+
 
 final allcoins = <Coin>[
   Coin(
     name: 'Bitcoin',
-    icon: 'assets/bitcoin.png'
+    icon: 'assets/bitcoin.png',
+    Num: 0
    ),
   Coin(
       name: 'USDT ERC20',
-      icon: 'assets/tether.png'
+      icon: 'assets/tether.png',
+      Num: 1
   ),
   Coin(
       name: 'USDT TRC20',
-      icon: 'assets/tether.png'
+      icon: 'assets/tether.png',
+      Num: 2
   ),
   Coin(
       name: 'USDT POLYGON',
-      icon: 'assets/tether.png'
+      icon: 'assets/tether.png',
+      Num: 3
   ),
   Coin(
       name: 'Dai (DAI)',
-      icon: 'assets/ps-dai.png'
+      icon: 'assets/ps-dai.png',
+      Num: 4
   ),
   Coin(
       name: 'Pax Dollar (USDP)',
-      icon: 'assets/ps-pax.png'
+      icon: 'assets/ps-pax.png',
+      Num: 5
   ),
   Coin(
       name: 'BINANCE USD (BUSD)',
-      icon: 'assets/bnb.png'
+      icon: 'assets/bnb.png',
+      Num: 6
   ),
   Coin(
       name: 'Solana',
-      icon: 'assets/ps-solana.png'
+      icon: 'assets/ps-solana.png',
+      Num: 7
   ),
   Coin(
       name: 'Ethereum',
-      icon: 'assets/ethereum.png'
+      icon: 'assets/ethereum.png',
+      Num: 8
   ),
   Coin(
       name: 'Monero',
-      icon: 'assets/monero.png'
+      icon: 'assets/monero.png',
+      Num: 9
   ),
   Coin(
       name: 'Litecoin',
-      icon: 'assets/litecoin.png'
+      icon: 'assets/litecoin.png',
+      Num: 10
   ),
   Coin(
       name: 'Dash',
-      icon: 'assets/ps-dash2.png'
+      icon: 'assets/ps-dash2.png',
+      Num: 11
   ),
   Coin(
       name: 'Tron',
-      icon: 'assets/tron.png'
+      icon: 'assets/tron.png',
+      Num: 12
   ),
   Coin(
       name: 'Stellar',
-      icon: 'assets/stellar.png'
+      icon: 'assets/stellar.png',
+      Num: 13
   ),
   Coin(
       name: 'Ripple',
-      icon: 'assets/ripple.png'
+      icon: 'assets/ripple.png',
+      Num: 14
   ),
   Coin(
       name: 'ZCash',
-      icon: 'assets/zcash.png'
+      icon: 'assets/zcash.png',
+      Num: 15
   ),
   Coin(
       name: 'Dogecoin',
-      icon: 'assets/dogecoin.png'
+      icon: 'assets/dogecoin.png',
+      Num: 16
   ),
 ];
+
+
+List<Widget> WL = [
+
+
+        Container(
+          margin: EdgeInsets.fromLTRB(10, 2, 10, 2),
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/dogecoin.png'),
+                fit: BoxFit.contain),
+          ),
+        ),
+
+  Container(
+    child:
+    Row(
+      children: [
+        Container(
+          margin: EdgeInsets.fromLTRB(10, 2, 10, 2),
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/dogecoin.png'),
+                fit: BoxFit.contain),
+          ),
+        ),
+        Container(child:
+        Text('Dogecoin', style: TextStyle(
+            color: Colors.black
+        ),),),
+      ],
+    ),
+  ),
+  Container(
+    child:
+    Row(
+      children: [
+        Container(
+          margin: EdgeInsets.fromLTRB(10, 2, 10, 2),
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/dogecoin.png'),
+                fit: BoxFit.contain),
+          ),
+        ),
+        Container(child:
+        Text('Dogecoin', style: TextStyle(
+            color: Colors.black
+        ),),),
+      ],
+    ),
+  ),
+];
+
+
+final coinsList =
+    [
+
+
+      'Bitcoin',
+     // name: 'USDT ERC20',
+      'USDT TRC20',
+     // name: 'USDT POLYGON',
+    //  name: 'Dai (DAI)',
+    //  name: 'Pax Dollar (USDP)',
+      'BINANCE USD (BUSD)',
+     // name: 'Solana',
+      'Ethereum',
+      'Monero',
+      'Litecoin',
+     'Dash',
+      'Tron',
+      'Stellar',
+    //  name: 'Ripple',
+      'ZCash',
+     'Dogecoin',
+    ];
+
+
 class Bank {
   String name;
   String icon;
